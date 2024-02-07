@@ -13,4 +13,5 @@ const server = new Schema({
     name: String
 })
 
-module.exports = mongoose.model('configuration', config);
+module.exports.config = mongoose.model('configuration', config);
+module.exports.servers = mongoose.model('server', server);

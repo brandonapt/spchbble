@@ -18,10 +18,24 @@ client.on("ready", () => {
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot) return;
+
   const serverid = message.guild.id;
-  const data = await db.findOne({ id: serverid });
+  const farm = await db.servers.findOne({ id: serverid });
+  if (!farm) {
+    const newFarm = new db.servers({
+      id: serverid,
+      name: message.guild.name,
+    });
+    newFarm.save();
+  } else {
+    if (farm.name !== message.guild.name) {
+      farm.name = message.guild.name;
+      farm.save();
+    }
+  }
+  const data = await db.config.findOne({ id: serverid });
   if (!data) {
-    const newData = new db({
+    const newData = new db.config({
       id: serverid,
       prefix: ";",
     });

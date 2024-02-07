@@ -2,7 +2,7 @@ const db = require("../db.js");
 const fs = require("fs");
 module.exports.run = async (client, message, args) => {
   const serverid = message.guild.id;
-  const data = await db.findOne({
+  const data = await db.config.findOne({
     id: serverid,
   });
 

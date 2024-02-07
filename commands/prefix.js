@@ -9,12 +9,12 @@ module.exports.run = async (client, message, args) => {
     const newPrefix = args[0];
     const serverid = message.guild.id;
 
-    const data = await database.findOne({ id: serverid });
+    const data = await database.config.findOne({ id: serverid });
     if (data) {
         data.prefix = newPrefix;
         data.save();
     } else {
-        const newData = new database({
+        const newData = new database.config({
             id: serverid,
             prefix: newPrefix,
         });
