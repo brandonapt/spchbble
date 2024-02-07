@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@discordjs/builders": "^1.7.0",
+    "canvas": "^2.11.2",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1",
+    "mongoose": "^8.1.1"
+  }
+}
